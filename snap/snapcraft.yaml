@@ -10,8 +10,11 @@ apps:
 
   plexmediaserver:
     command: bin/server.sh
+    plugs:
+      - network-bind
+      - removable-media
 
-confinement: devmode
+confinement: strict
 grade: stable
 
 parts:
