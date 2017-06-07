@@ -1,0 +1,10 @@
+name: plexmediaserver
+version: 1.5.6.3790-4613ce077
+summary: Unofficial snap for the Plex media server
+architectures: [amd64]
+description: |
+  Plex organizes all of your personal media so you can easily
+  access and enjoy it. See https://www.plex.tv/
+
+confinement: devmode
+grade: devel
