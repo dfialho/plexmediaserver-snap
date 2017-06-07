@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-# The followign environment variables were taken from the systemd init file for
+# The following environment variables were taken from the systemd init file for
 # plex media server. Some of these variables need to be changed here to point
 # to the directories accessible inside the snap application
 
@@ -14,7 +13,8 @@ export PLEX_MEDIA_SERVER_USER=root	# snaps always run using the root user
 export PLEX_MEDIA_SERVER_HOME=$SNAP/usr/lib/plexmediaserver
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/usr/lib/plexmediaserver
 
-# Place Support directory in the 'common' directory
+# Plex config directory is placed in the common directory because this can
+# contain GBs of data
 export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="$SNAP_COMMON/Library/Application_Support"
 
 # Force plex media server to use system default language
@@ -23,9 +23,14 @@ export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="$SNAP_COMMON/Library/Applicati
 # for details. Required to get video playback working.
 export LC_ALL=C
 
+# Place the tmp directory in the common
+export TMPDIR=$SNAP_COMMON/tmp
+export PLEX_MEDIA_SERVER_TMPDIR=$TMPDIR
+
 # Create necessary directories
 mkdir -p $PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR
 mkdir -p $PLEX_MEDIA_SERVER_HOME
 mkdir -p $PLEX_MEDIA_SERVER_HOME/Resources
+mkdir -p $TMPDIR
 
 $SNAP/usr/lib/plexmediaserver/Plex\ Media\ Server
