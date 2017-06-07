@@ -1,4 +1,4 @@
-name: plexmediaserver
+name: menta-plexmediaserver
 version: 1.5.6.3790-4613ce077
 summary: Unofficial snap for the Plex media server for the amd64 architecture
 architectures: [amd64]
@@ -8,7 +8,7 @@ description: |
 
 apps:
 
-  plexmediaserver:
+  server:
     command: bin/server.sh
     plugs:
       - network-bind
