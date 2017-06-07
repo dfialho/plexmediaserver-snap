@@ -10,6 +10,8 @@ apps:
 
   server:
     command: bin/server.sh
+    daemon: simple
+    restart-condition: always
     plugs:
       - network-bind
       - removable-media
