@@ -11,7 +11,7 @@ export PLEX_MEDIA_SERVER_USER=root	# snaps always run using the root user
 
 # Redirect installation paths to the snap directory
 export PLEX_MEDIA_SERVER_HOME=$SNAP/usr/lib/plexmediaserver
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/usr/lib/plexmediaserver
+export LD_LIBRARY_PATH=${PLEX_MEDIA_SERVER_HOME}
 
 # Plex config directory is placed in the common directory because this can
 # contain GBs of data
