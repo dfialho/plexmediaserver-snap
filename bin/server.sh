@@ -18,14 +18,18 @@ export LD_LIBRARY_PATH=${PLEX_MEDIA_SERVER_HOME}
 export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="$SNAP_COMMON/Library/Application_Support"
 
 # Force plex media server to use system default language
-#
+# Required to get video playback working.
 # See https://forums.plex.tv/discussion/26959/any-idea-whats-causing-this-error-when-running-start-sh
-# for details. Required to get video playback working.
+# for details.
 export LC_ALL=C
 
-# Place the tmp directory in the common
+# The tmp directory is where the mediaserver stores the transcodes
+# Place the tmp directory in the common directory
 export TMPDIR=$SNAP_COMMON/tmp
 export PLEX_MEDIA_SERVER_TMPDIR=$TMPDIR
+
+# Use syslog for logging instead of sending logs to Plex Media Server.log
+export PLEX_MEDIA_SERVER_USE_SYSLOG=true
 
 # Create necessary directories
 mkdir -p $PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR
