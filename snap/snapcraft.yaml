@@ -15,6 +15,7 @@ apps:
     plugs:
       - network-bind
       - removable-media
+      - home
 
 confinement: strict
 grade: stable
