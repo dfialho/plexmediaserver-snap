@@ -1,5 +1,5 @@
 name: menta-plexmediaserver
-version: 1.9.4.4325
+version: 1.10.0.4523
 summary: Unofficial snap for the Plex media server for the amd64 architecture
 architectures: [amd64]
 description: |
@@ -24,7 +24,7 @@ parts:
 
   server:
     plugin: dump
-    source: https://downloads.plex.tv/plex-media-server/1.9.4.4325-1bf240a65/plexmediaserver_1.9.4.4325-1bf240a65_amd64.deb
+    source: https://downloads.plex.tv/plex-media-server/1.10.0.4523-648bc61d4/plexmediaserver_1.10.0.4523-648bc61d4_amd64.deb
     install: |
       rm -f etc/init.d/plexmediaserver
       rm -f ../install/etc/init.d/plexmediaserver
