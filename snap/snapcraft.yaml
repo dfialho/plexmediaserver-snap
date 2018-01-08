@@ -25,9 +25,9 @@ parts:
   server:
     plugin: dump
     source: https://downloads.plex.tv/plex-media-server/1.10.0.4523-648bc61d4/plexmediaserver_1.10.0.4523-648bc61d4_amd64.deb
-    install: |
+    source-type: deb
+    prepare: |
       rm -f etc/init.d/plexmediaserver
-      rm -f ../install/etc/init.d/plexmediaserver
 
   server-configurations:
     plugin: dump
