@@ -1,35 +1,39 @@
 name: menta-plexmediaserver
-version: 1.10.1.4602
-summary: Unofficial snap for the Plex media server for the amd64 architecture
+version: '1.14.1.5488-cc260c476'
+summary: Your media on all your devices.
 architectures: [amd64]
 description: |
-  Plex organizes all of your personal media so you can easily
-  access and enjoy it. See https://www.plex.tv/
-
-apps:
-
-  server:
-    command: bin/server.sh
-    daemon: simple
-    restart-condition: always
-    plugs:
-      - network-bind
-      - removable-media
-      - home
+  Plex makes it possible to enjoy all of your media, whether in your living
+  room, the car, or on a boat in the South Pacific!
+  .
+  You can manage your media by browsing to http://localhost:32400/manage
 
 confinement: strict
 grade: stable
 
+apps:
+  plexmediaserver:
+    command: bin/wrapper.sh
+    daemon: simple
+    restart-condition: always
+    plugs:
+      - home
+      - network
+      - network-bind
+      - removable-media
+
 parts:
-
-  server:
+  plexmediaserver:
     plugin: dump
-    source: https://downloads.plex.tv/plex-media-server/1.10.1.4602-f54242b6b/plexmediaserver_1.10.1.4602-f54242b6b_amd64.deb
-    source-type: deb
+    source: https://downloads.plex.tv/plex-media-server/$SNAPCRAFT_PROJECT_VERSION/plexmediaserver_$SNAPCRAFT_PROJECT_VERSION_amd64.deb
     prepare: |
-      rm -f etc/init.d/plexmediaserver
-
-  server-configurations:
+      rm -rf etc
+      rm -rf lib
+      rm -rf usr/sbin
+      rm -rf usr/share/doc
+      sed -i 's|Icon=plexmediamanager|Icon=/usr/share/pixmaps/plexmediamanager\.png|' usr/share/applications/plexmediamanager.desktop
+  wrapper:
     plugin: dump
-    prime:
-      - bin/server.sh
+    source: files/
+    prepare: |
+      chmod +x bin/wrapper.sh
